@@ -46,9 +46,25 @@ function renderTaskItems() {
   for(let i = 0; i < tasks.length; i++ ){
       let task = tasks[i];
       let itemEl = document.createElement("div");
+      itemEl.className = "task";
 
       let doneEl = document.createElement("input");
        doneEl.type = "checkbox";
+       doneEl.checked = task.done;
+       if(task.done) {
+           itemEl.classList.add("done");
+       } else {
+           itemEl.classList.remove("done");
+       }
+
+       doneEl.onchange = (e) => {
+           task.done = e.target.checked;
+           if(task.done) {
+            itemEl.classList.add("done");
+        } else {
+            itemEl.classList.remove("done");
+        }
+       }
        itemEl.append(doneEl);
 
       let titleEl = document.createElement("label");
