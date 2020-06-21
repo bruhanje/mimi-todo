@@ -43,14 +43,22 @@ body{
     flex-grow: 1;
 }
  
-.todo-items > .task > button {
+.todo-items .ctrlbar > button {
     border: none;
     background: none;
     color: blue;
     cursor: pointer;
 }
 
-.todo-items > .task > button:hover {
+.todo-items .ctrlbar > button:disabled {
+    color: grey;
+    /* cursor: pointer;*/
+}
+.todo-items .ctrlbar > button:disabled:hover {
+    font-weight: unset;
+}
+
+.todo-items .ctrlbar > button:hover {
     font-weight: bolder;
 }
 
