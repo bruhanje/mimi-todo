@@ -93,15 +93,21 @@ function renderTaskCtrlBar(tasks, taskIdx) {
         upEl.disabled = true;
     }
     upEl.innerText = "↑";
-    upEl.onclick = () => {
-        //
-    };
+    upEl.onclick = (e) => {
+		let curObj = tasks[taskIdx];//当前位置对象
+		let preObj = tasks[taskIdx+1];//上一个位置对象
+		tasks.splice(taskIdx,1,preObj);//上一个节点移动到当前节点
+		tasks.splice(taskIdx+1,1,curObj);//当前节点往上移动
+	}
     ctrlbarEl.append(upEl);
 
     let downEl = document.createElement("button");
     downEl.innerText = "↓";
     downEl.onclick = () => {
-        //
+        let curObj = tasks[taskIdx];//当前位置对象
+		let downObj = tasks[taskIdx-1];//下一个位置对象
+		tasks.splice(taskIdx,1,downObj);//下一个节点移动到当前节点
+		tasks.splice(taskIdx-1,1,curObj);//当前节点往下移动
     };
     ctrlbarEl.append(downEl);
 
